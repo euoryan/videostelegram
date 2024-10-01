@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriais de Gravação no Telegram</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+        <h1 class="text-2xl font-bold mb-6 text-center">Tutoriais de Gravação</h1>
+        
+        <div class="space-y-6">
+            <div class="text-center">
+                <h2 class="text-xl font-semibold mb-2">Android</h2>
+                <p class="text-sm text-gray-600 mb-3">Aprenda a gravar no Android</p>
+                <button onclick="openVideo('android')" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition duration-300 w-full">Ver Tutorial Android</button>
+            </div>
+
+            <div class="border-t pt-6 text-center">
+                <h2 class="text-xl font-semibold mb-2">iPhone</h2>
+                <p class="text-sm text-gray-600 mb-3">Descubra como gravar no iPhone</p>
+                <button onclick="openVideo('iphone')" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300 w-full">Ver Tutorial iPhone</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
+        <div class="w-full max-w-2xl p-4">
+            <div class="relative bg-white rounded-lg overflow-hidden">
+                <video id="tutorialVideo" controls class="w-full">
+                    <source src="" type="video/mp4">
+                    Seu navegador não suporta o elemento de vídeo.
+                </video>
+                <button onclick="closeVideo()" class="absolute top-2 right-2 text-gray-800 bg-white rounded-full w-8 h-8 flex items-center justify-center focus:outline-none shadow">
+                    ✕
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openVideo(type) {
+            const video = document.getElementById('tutorialVideo');
+            video.src = `assets/${type}.MP4`;
+            document.getElementById('videoModal').classList.remove('hidden');
+            document.getElementById('videoModal').classList.add('flex');
+        }
+
+        function closeVideo() {
+            const video = document.getElementById('tutorialVideo');
+            video.pause();
+            video.currentTime = 0;
+            document.getElementById('videoModal').classList.add('hidden');
+            document.getElementById('videoModal').classList.remove('flex');
+        }
+    </script>
+</body>
+</html>
