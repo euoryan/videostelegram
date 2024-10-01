@@ -3,57 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutoriais de Gravação no Telegram</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Como Gravar Vídeos no Telegram</title>
+    <link rel="icon" href="assets/image/icon letra.svg" type="image/svg+xml">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .header {
+            background-color: #0088cc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 100px; /* Ajustado para 100px como no exemplo original */
+            height: auto;
+            background-color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 90%;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #0088cc;
+            font-size: 1.8em;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .video-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        video {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .video-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #0088cc;
+        }
+
+        footer {
+            background-color: transparent;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 0;
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.6em;
+            }
+
+            .video-title {
+                font-size: 1.1em;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-900 font-sans flex items-center justify-center min-h-screen">
-    <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
-        <h1 class="text-2xl font-bold mb-6 text-center">Tutoriais de Gravação</h1>
-        
-        <div class="space-y-6">
-            <div class="text-center">
-                <h2 class="text-xl font-semibold mb-2">Android</h2>
-                <p class="text-sm text-gray-600 mb-3">Aprenda a gravar no Android</p>
-                <button onclick="openVideo('android')" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600 transition duration-300 w-full">Ver Tutorial Android</button>
-            </div>
-
-            <div class="border-t pt-6 text-center">
-                <h2 class="text-xl font-semibold mb-2">iPhone</h2>
-                <p class="text-sm text-gray-600 mb-3">Descubra como gravar no iPhone</p>
-                <button onclick="openVideo('iphone')" class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300 w-full">Ver Tutorial iPhone</button>
-            </div>
-        </div>
+<body>
+    <div class="header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo" class="logo">
     </div>
 
-    <div id="videoModal" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
-        <div class="w-full max-w-2xl p-4">
-            <div class="relative bg-white rounded-lg overflow-hidden">
-                <video id="tutorialVideo" controls class="w-full">
-                    <source src="" type="video/mp4">
-                    Seu navegador não suporta o elemento de vídeo.
-                </video>
-                <button onclick="closeVideo()" class="absolute top-2 right-2 text-gray-800 bg-white rounded-full w-8 h-8 flex items-center justify-center focus:outline-none shadow">
-                    ✕
-                </button>
-            </div>
+    <div class="container">
+        <h2>Como Gravar Vídeos no Telegram</h2>
+
+        <p>Aprenda a gravar vídeos no Telegram usando seu smartphone Android ou iPhone:</p>
+
+        <div class="video-container">
+            <div class="video-title">Tutorial para Android</div>
+            <video controls>
+                <source src="assets/android.MP4" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
+        </div>
+
+        <div class="video-container">
+            <div class="video-title">Tutorial para iPhone</div>
+            <video controls>
+                <source src="assets/iphone.MP4" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
         </div>
     </div>
-
-    <script>
-        function openVideo(type) {
-            const video = document.getElementById('tutorialVideo');
-            video.src = `assets/${type}.MP4`;
-            document.getElementById('videoModal').classList.remove('hidden');
-            document.getElementById('videoModal').classList.add('flex');
-        }
-
-        function closeVideo() {
-            const video = document.getElementById('tutorialVideo');
-            video.pause();
-            video.currentTime = 0;
-            document.getElementById('videoModal').classList.add('hidden');
-            document.getElementById('videoModal').classList.remove('flex');
-        }
-    </script>
+    
+    <footer>
+        <p>@euoryan</p>
+    </footer>
 </body>
 </html>
